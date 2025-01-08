@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import ChatInput from "./ChatInput";
+import ChatInput from "../ChatInput";
 import { useSelector } from "react-redux";
 import { selectRoomId } from "../features/appSlice";
 
@@ -19,15 +19,17 @@ function Chat() {
             </h4>
             <StarBorderIcon />
           </HeaderLeft>
+
           <HeaderRight>
             <p>
               <InfoOutlinedIcon /> Details
             </p>
           </HeaderRight>
         </Header>
-        <ChatMessages>
-          <ChatInput channelId={roomId} /> 
-        </ChatMessages>
+
+        <ChatMessages></ChatMessages>
+
+        <ChatInput channelId={roomId} />
       </>
     </ChatContainer>
   );
@@ -42,6 +44,8 @@ const Header = styled.div`
   border-bottom: 1px solid lightgray;
 `;
 
+const ChatMessages = styled.div``;
+
 const HeaderLeft = styled.div`
   display: flex;
   align-items: center;
@@ -52,8 +56,8 @@ const HeaderLeft = styled.div`
     margin-right: 10px;
   }
 
-  > .MuiSvgIcon-root {
-    margin-left: 20px;
+  > h4 > .MuiSvgIcon-root {
+    margin-left: 10px;
     font-size: 18px;
   }
 `;
@@ -77,5 +81,3 @@ const ChatContainer = styled.div`
   overflow-y: scroll;
   margin-top: 60px;
 `;
-
-const ChatMessages = styled.div``;

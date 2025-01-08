@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useDispatch } from "react-redux";
-import { enterRoom } from '../features/appSlice'
+import { enterRoom } from "../features/appSlice";
 
 function SidebarOption({ Icon, title, addChannelOption, id }) {
   const dispatch = useDispatch();
@@ -25,9 +25,11 @@ function SidebarOption({ Icon, title, addChannelOption, id }) {
 
   const selectChannel = () => {
     if (id) {
-      dispatch(enterRoom({
-        roomId: id
-      }))
+      dispatch(
+        enterRoom({
+          roomId: id,
+        })
+      );
     }
     console.log("entered into the room");
   };
