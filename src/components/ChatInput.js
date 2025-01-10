@@ -1,14 +1,17 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { Button } from "@mui/material";
-import { db } from "./firebase";
+import { db } from "../firebase";
 import { collection, doc, addDoc, serverTimestamp } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth } from "firebase/auth";
 
 
 function ChatInput({ channelName, channelId }) {
   const [input, setInput] = useState("");
-    const chatRef = useRef(null);
-
+    const auth = getAuth();
+  const [user] = useAuthState(auth);
+  const chatRef = useRef(null);
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -21,15 +24,13 @@ function ChatInput({ channelName, channelId }) {
       await addDoc(collection(doc(db, "rooms", channelId), "messages"), {
         message: input.trim(),
         timestamp: serverTimestamp(),
-        user: "Eman Tariq",
-        userImage:
-          "https://i.pinimg.com/236x/a6/43/3f/a6433f55e1ca74e67c9a4f62b6a2d02f.jpg",
+        user: user.displayName,
+        userImage:user.photoURL
       });
 
       chatRef.current.scrollIntoView({
         behavior: "smooth",
-      })
-      
+      });
 
       setInput("");
     } catch (error) {

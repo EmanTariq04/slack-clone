@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import ChatInput from "../ChatInput";
+import ChatInput from "./ChatInput";
 import { useSelector } from "react-redux";
 import { selectRoomId } from "../features/appSlice";
 import { db } from "../firebase";
