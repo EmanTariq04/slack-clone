@@ -21,7 +21,8 @@ function App() {
             src="https://i.pinimg.com/236x/16/d0/a8/16d0a854a507e009f1a133ad3a0cd09f.jpg"
             alt="logo"
           />
-          <Spinner name="ball-spin-fade-loader" />{" "}
+
+          <Spinner name="circle" fadeIn="none" />
         </AppLoadingContents>
       </AppLoading>
     );
