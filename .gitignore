@@ -1,4 +1,2 @@
 node_modules/
-src/features/
 src/firebase.js
-src/app/
